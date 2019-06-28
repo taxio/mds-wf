@@ -2,9 +2,9 @@ package cmd
 
 import "github.com/spf13/cobra"
 
-func NewRootCmd(args []string) *cobra.Command {
+func NewRootCmd(args []string, ctx *CommandContext) *cobra.Command {
 	rootCmd := &cobra.Command{
-		Use:   "mds-wf",
+		Use:   "mds",
 		Short: "markdown shortcut utility",
 		Long:  "",
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -14,8 +14,8 @@ func NewRootCmd(args []string) *cobra.Command {
 	rootCmd.SetArgs(args)
 
 	subCmds := []*cobra.Command{
-		NewLinkSubCmd(),
-		NewSummarySubCmd(),
+		NewLinkSubCmd(ctx),
+		NewSummarySubCmd(ctx),
 	}
 	rootCmd.AddCommand(subCmds...)
 

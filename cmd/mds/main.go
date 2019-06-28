@@ -21,7 +21,10 @@ func main() {
 		args = append(args, s)
 	}
 
-	rootCmd := cmd.NewRootCmd(args)
+	cmdCtx := &cmd.CommandContext{
+		Out: os.Stdout,
+	}
+	rootCmd := cmd.NewRootCmd(args, cmdCtx)
 
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
