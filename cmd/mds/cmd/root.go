@@ -16,6 +16,7 @@ func NewRootCmd(args []string, ctx *CommandContext) *cobra.Command {
 	subCmds := []*cobra.Command{
 		NewLinkSubCmd(ctx),
 		NewSummarySubCmd(ctx),
+		NewTableSubCmd(ctx),
 	}
 	rootCmd.AddCommand(subCmds...)
 
